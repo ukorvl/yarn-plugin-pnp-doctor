@@ -1,0 +1,27 @@
+name: Label Pull Requests
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  label-pr:
+    if: ${{ !github.event.pull_request.head.repo.fork }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Add labels for PR
+        uses: actions/labeler@v6
+        with:
+          configuration-path: ".github/labeler.yaml"

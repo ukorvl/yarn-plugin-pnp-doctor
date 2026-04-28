@@ -1,0 +1,9 @@
+dist
+build
+node_modules
+.agents
+.eslintcache
+.pnp.*
+.yarn
+artifacts
+bundles

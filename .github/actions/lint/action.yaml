@@ -1,0 +1,24 @@
+name: "Lint"
+description: "Validate formatting, types, package smoke checks, and commits"
+
+inputs:
+  check-commits:
+    description: "Check whether commits follow the conventional commits specification"
+    required: false
+    default: "false"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Lint
+      run: yarn lint
+      shell: bash
+
+    - name: Validate package tarball
+      run: yarn verify:package
+      shell: bash
+
+    - name: Lint commits
+      if: ${{ inputs.check-commits == 'true' }}
+      run: yarn lint:commits
+      shell: bash

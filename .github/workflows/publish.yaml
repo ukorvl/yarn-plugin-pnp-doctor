@@ -1,0 +1,62 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+  artifact-metadata: write
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Lint
+        uses: ./.github/actions/lint
+        with:
+          check-commits: false
+
+      - name: Test
+        uses: ./.github/actions/test
+
+      - name: Build
+        uses: ./.github/actions/build
+
+      - name: Pack package tarball
+        id: pack
+        uses: ./.github/actions/pack-package
+        with:
+          artifacts-dir: artifacts
+
+      - name: Generate SBOM
+        run: npm sbom --sbom-format cyclonedx --sbom-type library > artifacts/package.sbom.cdx.json
+        shell: bash
+
+      - name: Upload and attest package artifacts
+        uses: ./.github/actions/attest-artifacts
+        with:
+          artifact-name: npm-package
+          subject-path: ${{ steps.pack.outputs.tarball-path }}
+          sbom-path: artifacts/package.sbom.cdx.json
+
+      - name: Publish tarball to npm
+        run: npm publish "${{ steps.pack.outputs.tarball-path }}" --provenance --access public
+        shell: bash
+
+      - name: Clean up
+        run: rm -rf artifacts
+        shell: bash

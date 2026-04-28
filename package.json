@@ -1,0 +1,106 @@
+{
+  "name": "yarn-plugin-pnp-doctor",
+  "version": "0.0.0",
+  "description": "A Yarn plugin that makes strict Plug'n'Play installs practical in messy ecosystems.",
+  "license": "MIT",
+  "homepage": "https://github.com/ukorvl/yarn-plugin-pnp-doctor#readme",
+  "bugs": {
+    "url": "https://github.com/ukorvl/yarn-plugin-pnp-doctor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukorvl/yarn-plugin-pnp-doctor.git"
+  },
+  "keywords": [
+    "yarn",
+    "yarn-plugin",
+    "pnp",
+    "plugnplay",
+    "dependencies",
+    "web3"
+  ],
+  "packageManager": "yarn@4.13.0",
+  "main": "./sources/index.ts",
+  "exports": {
+    ".": "./sources/index.ts",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bundles/",
+    "sources/",
+    "LICENSE",
+    "readme.md"
+  ],
+  "scripts": {
+    "build": "builder build plugin",
+    "build:dev": "builder build plugin --no-minify",
+    "check": "yarn typecheck && yarn test && yarn build && yarn check:bundle-size",
+    "check:bundle-size": "node scripts/check-bundle-size.mjs",
+    "commitlint": "commitlint",
+    "commitlint:edit": "commitlint --edit",
+    "eslint": "eslint .",
+    "format": "prettier --check \"**/*.{js,ts,json,md,yaml,yml}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,json,md,yaml,yml}\"",
+    "hooks:install": "simple-git-hooks",
+    "lint": "yarn format && yarn eslint && yarn lint:md-links && yarn typecheck",
+    "lint:commits": "sh -c 'if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then yarn commitlint --from=HEAD~1 --to=HEAD; else yarn commitlint --last; fi'",
+    "lint:fix": "yarn format:fix && yarn eslint --fix",
+    "lint:md-links": "node scripts/check-markdown-links.mjs",
+    "lint-staged": "lint-staged",
+    "pack:package": "mkdir -p artifacts && npm pack --pack-destination artifacts",
+    "prepack": "yarn build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "verify:package": "bash scripts/verify-tarball.sh"
+  },
+  "dependencies": {
+    "clipanion": "^4.0.0-rc.4",
+    "tslib": "^2.8.1"
+  },
+  "peerDependencies": {
+    "@yarnpkg/cli": "^4.9.3",
+    "@yarnpkg/core": "^4.4.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^9",
+    "@types/node": "^24.0.0",
+    "@yarnpkg/builder": "^4.2.2",
+    "@yarnpkg/cli": "^4.9.3",
+    "@yarnpkg/core": "^4.4.3",
+    "eslint": "^9",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-package-json": "^0.91.1",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-regexp": "^3.1.0",
+    "eslint-plugin-security": "^4.0.0",
+    "eslint-plugin-sonarjs": "^4.0.3",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "globals": "^17.5.0",
+    "jsonc-eslint-parser": "^3.1.0",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.7.4",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.59.0",
+    "vitest": "^3.2.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn lint-staged",
+    "commit-msg": "yarn commitlint:edit \"$1\""
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,md,yaml,yml}": "yarn prettier --write"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=20.19.0 <25"
+  }
+}

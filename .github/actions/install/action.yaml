@@ -1,0 +1,25 @@
+name: "Install dependencies"
+description: "Install repository dependencies with Yarn"
+
+inputs:
+  node-version-file:
+    description: "Node.js version file"
+    default: ".nvmrc"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+        cache: "yarn"
+        cache-dependency-path: yarn.lock
+
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+
+    - name: Install dependencies
+      run: yarn install --immutable
+      shell: bash

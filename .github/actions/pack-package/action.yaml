@@ -1,0 +1,56 @@
+name: "Pack package tarball"
+description: "Pack the root npm package into a tarball"
+
+inputs:
+  artifacts-dir:
+    description: "Directory where tarball artifacts should be written"
+    required: false
+    default: "artifacts"
+
+outputs:
+  tarball-path:
+    description: "Path to the packed package tarball"
+    value: ${{ steps.pack.outputs.tarball_path }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare artifacts directory
+      shell: bash
+      run: mkdir -p "${INPUTS_ARTIFACTS_DIR}"
+      env:
+        INPUTS_ARTIFACTS_DIR: ${{ inputs.artifacts-dir }}
+
+    - name: Pack package tarball
+      id: pack
+      shell: bash
+      run: |
+        mkdir -p "${NPM_CONFIG_CACHE}"
+
+        PACKED_NAME=$(
+          npm pack --pack-destination "${INPUTS_ARTIFACTS_DIR}" --json \
+            --ignore-scripts \
+            | node --input-type=module -e "let data=''; for await (const chunk of process.stdin) data += chunk; const parsed = JSON.parse(data); const first = Array.isArray(parsed) ? parsed[0] : parsed; console.log(first.filename);"
+        )
+
+        TARBALL_PATH="${PACKED_NAME}"
+
+        if [[ ! -f "${TARBALL_PATH}" && -f "${INPUTS_ARTIFACTS_DIR}/${PACKED_NAME}" ]]; then
+          TARBALL_PATH="${INPUTS_ARTIFACTS_DIR}/${PACKED_NAME}"
+        fi
+
+        if [[ -z "${TARBALL_PATH}" || "${TARBALL_PATH}" == "null" ]]; then
+          echo "No tarball filename in npm pack --json output" >&2
+          exit 1
+        fi
+
+        if [[ ! -f "${TARBALL_PATH}" ]]; then
+          echo "Packed tarball not found at ${TARBALL_PATH}" >&2
+          exit 1
+        fi
+
+        echo "tarball_path=${TARBALL_PATH}" >> "${GITHUB_OUTPUT}"
+        ls -la "${INPUTS_ARTIFACTS_DIR}"
+      env:
+        INPUTS_ARTIFACTS_DIR: ${{ inputs.artifacts-dir }}
+        NPM_CONFIG_CACHE: ${{ runner.temp }}/npm-cache

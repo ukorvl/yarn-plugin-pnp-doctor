@@ -1,0 +1,38 @@
+name: Bundle Size
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "sources/**"
+      - "scripts/check-bundle-size.mjs"
+      - ".github/actions/build/**"
+      - ".github/actions/install/**"
+      - ".github/workflows/size-limit.yaml"
+      - "package.json"
+      - "yarn.lock"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bundle-size:
+    name: Check plugin bundle size
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Build and check size
+        uses: ./.github/actions/build

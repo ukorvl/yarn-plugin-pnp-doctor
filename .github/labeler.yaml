@@ -1,0 +1,50 @@
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/workflows/**"
+          - ".github/actions/**"
+          - ".github/labeler.yaml"
+          - ".github/labels.yaml"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "**/README.md"
+          - "**/readme.md"
+          - "**/CHANGELOG.md"
+          - "**/changelog.md"
+
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "tests/**"
+          - "**/*.test.ts"
+          - "**/*.spec.ts"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "package.json"
+          - "yarn.lock"
+          - ".yarnrc.yml"
+
+core:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "sources/**"
+
+presets:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "sources/core/presets/**"
+          - "docs/preset-authoring.md"
+          - "fixtures/**"
+
+ai:
+  - changed-files:
+      - any-glob-to-any-file:
+          - AGENTS.md
+          - CLAUDE.md
+          - .github/instructions/**
+          - .github/copilot-instructions.md

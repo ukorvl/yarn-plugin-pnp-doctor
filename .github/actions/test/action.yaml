@@ -1,0 +1,9 @@
+name: "Test"
+description: "Run tests"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run tests
+      run: yarn test
+      shell: bash
