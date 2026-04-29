@@ -1,7 +1,7 @@
 {
   "name": "yarn-plugin-pnp-doctor",
   "version": "0.0.0",
-  "description": "A Yarn plugin that makes strict Plug'n'Play installs practical in messy ecosystems.",
+  "description": "A Yarn plugin that makes strict PnP installs practical in messy ecosystems.",
   "license": "MIT",
   "homepage": "https://github.com/ukorvl/yarn-plugin-pnp-doctor#readme",
   "bugs": {
@@ -10,6 +10,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ukorvl/yarn-plugin-pnp-doctor.git"
+  },
+  "author": {
+    "name": "ukorvl",
+    "email": "ukorotovskiy@gmail.com"
   },
   "keywords": [
     "yarn",
