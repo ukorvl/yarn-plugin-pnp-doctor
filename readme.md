@@ -1,8 +1,12 @@
-# PnP Doctor
-
-Make strict installs practical in real ecosystems.
-
-PnP Doctor is a Yarn plugin for diagnosing dependency graph shapes that are likely to cause Plug'n'Play compatibility trouble. The first development target is a command-only MVP:
+<div align="center">
+  <img
+  alt=""
+  src="https://raw.githubusercontent.com/ukorvl/design/master/yarn-plugin-pnp-doctor/logo.png"
+  loading="lazy"
+  height="200"
+/>
+  <p>PnP Doctor is a Yarn plugin for diagnosing dependency graph shapes that are likely to cause Plug'n'Play compatibility trouble.</p>
+</div>
 
 - inspect the resolved Yarn project graph
 - flag ecosystem hotspots that deserve extra attention under PnP
