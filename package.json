@@ -22,7 +22,7 @@
     "dependencies",
     "plugnplay"
   ],
-  "packageManager": "yarn@4.13.0",
+  "packageManager": "yarn@4.14.1",
   "main": "./sources/index.ts",
   "exports": {
     ".": "./sources/index.ts",
@@ -46,7 +46,6 @@
     "format:fix": "prettier --write \"**/*.{js,ts,json,md,yaml,yml}\"",
     "hooks:install": "simple-git-hooks",
     "lint": "yarn format && yarn eslint && yarn lint:md-links && yarn typecheck",
-    "lint:commits": "sh -c 'if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then yarn commitlint --from=HEAD~1 --to=HEAD; else yarn commitlint --last; fi'",
     "lint:fix": "yarn format:fix && yarn eslint --fix",
     "lint:md-links": "node scripts/check-markdown-links.mjs",
     "lint-staged": "lint-staged",
