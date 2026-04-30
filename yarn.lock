@@ -172,6 +172,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@augment-vir/assert@npm:^31.59.3, @augment-vir/assert@npm:^31.67.1, @augment-vir/assert@npm:^31.68.4":
+  version: 31.68.4
+  resolution: "@augment-vir/assert@npm:31.68.4"
+  dependencies:
+    "@augment-vir/core": "npm:^31.68.4"
+    "@date-vir/duration": "npm:^8.2.1"
+    deep-eql: "npm:^5.0.2"
+    expect-type: "npm:^1.3.0"
+    type-fest: "npm:^5.5.0"
+  checksum: 10c0/1760dcf642a2b077e608742d155c48aa6f3ee1f60f5c631f7da3f9564c1b695b6485654c34c6e6137e5619362c2ffcde602d57499703ee4ba855f75c3f45d76a
+  languageName: node
+  linkType: hard
+
+"@augment-vir/common@npm:^31.59.3, @augment-vir/common@npm:^31.67.1, @augment-vir/common@npm:^31.68.4":
+  version: 31.68.4
+  resolution: "@augment-vir/common@npm:31.68.4"
+  dependencies:
+    "@augment-vir/assert": "npm:^31.68.4"
+    "@augment-vir/core": "npm:^31.68.4"
+    "@date-vir/duration": "npm:^8.2.1"
+    ansi-styles: "npm:^6.2.3"
+    deepcopy-esm: "npm:^2.1.1"
+    json5: "npm:^2.2.3"
+    type-fest: "npm:^5.5.0"
+    typed-event-target: "npm:^4.3.0"
+  checksum: 10c0/ba70c9f944deecc48dcf0fc4c1b782bf0cf229a6bf5db5f39664dd9463c55684dc3f8566cb10991cf2c26f6346bb26dd7c097d3db644ff5d3405982e22fbc012
+  languageName: node
+  linkType: hard
+
+"@augment-vir/core@npm:^31.67.1, @augment-vir/core@npm:^31.68.4":
+  version: 31.68.4
+  resolution: "@augment-vir/core@npm:31.68.4"
+  dependencies:
+    "@date-vir/duration": "npm:^8.2.1"
+    browser-or-node: "npm:^3.0.0"
+    diff: "npm:^8.0.4"
+    json5: "npm:^2.2.3"
+    type-fest: "npm:^5.5.0"
+  checksum: 10c0/3513f5cd7a24b915cb348337da5110fe69f0df7b13081e19fe7f1c15308d0624f55653ccedbaabcc8459b8c6f0547ce29eea866202074f08298eeec042675c21
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0":
   version: 7.29.0
   resolution: "@babel/code-frame@npm:7.29.0"
@@ -396,6 +438,18 @@ __metadata:
     conventional-commits-parser:
       optional: true
   checksum: 10c0/798097baa08a13311989e803451b9a8e602f404fcde1ec9fef609512625674c2d2a2f4368fbe00754a36f255e5b93dd852e7d3f2a9814215f9887ffa55c93993
+  languageName: node
+  linkType: hard
+
+"@date-vir/duration@npm:^8.2.1":
+  version: 8.3.2
+  resolution: "@date-vir/duration@npm:8.3.2"
+  dependencies:
+    "@augment-vir/assert": "npm:^31.68.4"
+    "@types/luxon": "npm:^3.7.1"
+    luxon: "npm:^3.7.2"
+    type-fest: "npm:^5.5.0"
+  checksum: 10c0/6d82b291d2276e60c4ea95cc150c69f958f64f47e076b0bd3c71554412513cace130884767e424d6c483447267158db4c5fd66fa125d2072fee243ac67d69038
   languageName: node
   linkType: hard
 
@@ -835,6 +889,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@reteps/dockerfmt@npm:^0.5.1":
+  version: 0.5.2
+  resolution: "@reteps/dockerfmt@npm:0.5.2"
+  checksum: 10c0/c0af5dcc9c8c9d51c9eec4cfb454c85f31c760373288b9254054709b29a4accc1df10bd765712128dd173e53bfb8b880a94b0aa8b6c2d4294866d800dbdd14e1
+  languageName: node
+  linkType: hard
+
 "@rollup/rollup-android-arm-eabi@npm:4.60.2":
   version: 4.60.2
   resolution: "@rollup/rollup-android-arm-eabi@npm:4.60.2"
@@ -1203,6 +1264,13 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10c0/ff8f54fc49621210291f815fe5b15d809fd7d032941b3180743440bd507ecdf08b9e844625fa346af568c84bf34114eb378dcdc3e921a08ba1e2a08d7e3c809c
+  languageName: node
+  linkType: hard
+
+"@types/luxon@npm:^3.7.1":
+  version: 3.7.1
+  resolution: "@types/luxon@npm:3.7.1"
+  checksum: 10c0/2db30c13b58adcd86daa447faa3ba59515fe907ead8ee3e6bb716d662812af0619d712f6c1eb190cdd7f9d2c00444c3ecd80af0f36e8143eb0c5e7339d6b2aca
   languageName: node
   linkType: hard
 
@@ -2573,6 +2641,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-or-node@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "browser-or-node@npm:3.0.0"
+  checksum: 10c0/05db930e0a21bfffef74dbc4a27eaa12113e7f43a95f3b80a925f624212d701b86034cdfb5c422bdee061c4ae8442d294feee8996e6ae2555a8e46ea0b830b52
+  languageName: node
+  linkType: hard
+
 "browserslist@npm:^4.28.1":
   version: 4.28.2
   resolution: "browserslist@npm:4.28.2"
@@ -3091,7 +3166,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deep-eql@npm:^5.0.1":
+"deep-eql@npm:^5.0.1, deep-eql@npm:^5.0.2":
   version: 5.0.2
   resolution: "deep-eql@npm:5.0.2"
   checksum: 10c0/7102cf3b7bb719c6b9c0db2e19bf0aa9318d141581befe8c7ce8ccd39af9eaa4346e5e05adef7f9bd7015da0f13a3a25dcfe306ef79dc8668aedbecb658dd247
@@ -3102,6 +3177,13 @@ __metadata:
   version: 0.1.4
   resolution: "deep-is@npm:0.1.4"
   checksum: 10c0/7f0ee496e0dff14a573dc6127f14c95061b448b87b995fc96c017ce0a1e66af1675e73f1d6064407975bc4ea6ab679497a29fff7b5b9c4e99cb10797c1ad0b4c
+  languageName: node
+  linkType: hard
+
+"deepcopy-esm@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "deepcopy-esm@npm:2.1.1"
+  checksum: 10c0/56a21fd47eeed19f9c1c8c469e5368832596d8a1d21a73648c8acdbfae04e85e86bee7bd3669f1376da3cf0e6a487fb9d0de2f1b68b42e01ff4c90e49c2a1db0
   languageName: node
   linkType: hard
 
@@ -3152,6 +3234,13 @@ __metadata:
   version: 5.2.2
   resolution: "diff@npm:5.2.2"
   checksum: 10c0/52da594c54e9033423da26984b1449ae6accd782d5afc4431c9a192a8507ddc83120fe8f925d7220b9da5b5963c7b6f5e46add3660a00cb36df7a13420a09d4b
+  languageName: node
+  linkType: hard
+
+"diff@npm:^8.0.4":
+  version: 8.0.4
+  resolution: "diff@npm:8.0.4"
+  checksum: 10c0/7ee5d03926db4039be7252ac3b0abaae1bd122a2ca971e5ca7270e444e36ff83dd906fad1a719740ca347e97ed5dc8f458a76a8391dbcd7aff363bdafb348a00
   languageName: node
   linkType: hard
 
@@ -3917,7 +4006,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect-type@npm:^1.2.1":
+"expect-type@npm:^1.2.1, expect-type@npm:^1.3.0":
   version: 1.3.0
   resolution: "expect-type@npm:1.3.0"
   checksum: 10c0/8412b3fe4f392c420ab41dae220b09700e4e47c639a29ba7ba2e83cc6cffd2b4926f7ac9e47d7e277e8f4f02acda76fd6931cb81fd2b382fa9477ef9ada953fd
@@ -5082,6 +5171,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json5@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "json5@npm:2.2.3"
+  bin:
+    json5: lib/cli.js
+  checksum: 10c0/5a04eed94810fa55c5ea138b2f7a5c12b97c3750bc63d11e511dcecbfef758003861522a070c2272764ee0f4e3e323862f386945aeb5b85b87ee43f084ba586c
+  languageName: node
+  linkType: hard
+
 "jsonc-eslint-parser@npm:^3.1.0":
   version: 3.1.0
   resolution: "jsonc-eslint-parser@npm:3.1.0"
@@ -5263,6 +5361,13 @@ __metadata:
   version: 10.4.3
   resolution: "lru-cache@npm:10.4.3"
   checksum: 10c0/ebd04fbca961e6c1d6c0af3799adcc966a1babe798f685bb84e6599266599cd95d94630b10262f5424539bc4640107e8a33aa28585374abf561d30d16f4b39fb
+  languageName: node
+  linkType: hard
+
+"luxon@npm:^3.7.2":
+  version: 3.7.2
+  resolution: "luxon@npm:3.7.2"
+  checksum: 10c0/ed8f0f637826c08c343a29dd478b00628be93bba6f068417b1d8896b61cb61c6deacbe1df1e057dbd9298334044afa150f9aaabbeb3181418ac8520acfdc2ae2
   languageName: node
   linkType: hard
 
@@ -5917,6 +6022,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-plugin-multiline-arrays@npm:^4.1.7":
+  version: 4.1.7
+  resolution: "prettier-plugin-multiline-arrays@npm:4.1.7"
+  dependencies:
+    "@augment-vir/assert": "npm:^31.68.4"
+    "@augment-vir/common": "npm:^31.68.4"
+    proxy-vir: "npm:^2.0.2"
+  peerDependencies:
+    prettier: ">=3.0.0 <4.0.0"
+  checksum: 10c0/8dffa7361fcd41ffc8df2db9398728305f2d205f72f6b39ad96052712bbcfb9073610bc2afb28764743c0336380dd6d1c0b6987391c1d0469f98e4ce3e898aeb
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-packagejson@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "prettier-plugin-packagejson@npm:3.0.2"
+  dependencies:
+    sort-package-json: "npm:^3.6.0"
+  peerDependencies:
+    prettier: ^3
+  peerDependenciesMeta:
+    prettier:
+      optional: true
+  checksum: 10c0/c277b3252ce299c11053ad1b01968b0895b3baf2483323fcedbdae66ce9999b76d4b9e70396c58c39c61429d4672ba3f63a5e6e9a3104ff3b0000ec5214a4963
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-sh@npm:^0.18.1":
+  version: 0.18.1
+  resolution: "prettier-plugin-sh@npm:0.18.1"
+  dependencies:
+    "@reteps/dockerfmt": "npm:^0.5.1"
+    sh-syntax: "npm:^0.5.8"
+  peerDependencies:
+    prettier: ^3.6.0
+  checksum: 10c0/e79a8dab1b9cd966bf078b1ca4ec412d190fb905ca6bfb89f841d309ed39ecb7136901b64919e3d8e52e9233d658b64bc69203ff81384914ec90dedbcbe804da
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-sort-json@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "prettier-plugin-sort-json@npm:4.2.0"
+  peerDependencies:
+    prettier: ^3.0.0
+  checksum: 10c0/e1eea20998bd32da682d226c0eeb39f8a33548299f7092aa89c28caf1c171524a408d6b06773ef953b688f48577edaa3bfd7965e4b39a7e64c78dd9796216be3
+  languageName: node
+  linkType: hard
+
 "prettier@npm:^3.7.4":
   version: 3.8.3
   resolution: "prettier@npm:3.8.3"
@@ -5954,6 +6107,16 @@ __metadata:
   version: 2.0.2
   resolution: "protocols@npm:2.0.2"
   checksum: 10c0/b87d78c1fcf038d33691da28447ce94011d5c7f0c7fd25bcb5fb4d975991c99117873200c84f4b6a9d7f8b9092713a064356236960d1473a7d6fcd4228897b60
+  languageName: node
+  linkType: hard
+
+"proxy-vir@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "proxy-vir@npm:2.0.2"
+  dependencies:
+    "@augment-vir/assert": "npm:^31.59.3"
+    "@augment-vir/common": "npm:^31.59.3"
+  checksum: 10c0/558ded5e552afe27b2c39681318dc8439c2ed685b60d64a6b3a028c11789503c9388a003b30c6672792792e8fdefa938d4d3983f52998837f7a9778c73c6be31
   languageName: node
   linkType: hard
 
@@ -6477,6 +6640,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sh-syntax@npm:^0.5.8":
+  version: 0.5.8
+  resolution: "sh-syntax@npm:0.5.8"
+  dependencies:
+    tslib: "npm:^2.8.1"
+  checksum: 10c0/2d2609fc8760ef97175c852be26ee3eeb196078c5aec282c8b96a59ee362be4f470d3e0df4e372da6c7a7b44ccc42910cbdcb0915271b3cb6a6212d00dde116f
+  languageName: node
+  linkType: hard
+
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
@@ -6658,7 +6830,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sort-package-json@npm:^3.4.0":
+"sort-package-json@npm:^3.4.0, sort-package-json@npm:^3.6.0":
   version: 3.6.1
   resolution: "sort-package-json@npm:3.6.1"
   dependencies:
@@ -6933,6 +7105,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tagged-tag@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "tagged-tag@npm:1.0.0"
+  checksum: 10c0/91d25c9ffb86a91f20522cefb2cbec9b64caa1febe27ad0df52f08993ff60888022d771e868e6416cf2e72dab68449d2139e8709ba009b74c6c7ecd4000048d1
+  languageName: node
+  linkType: hard
+
 "tar-stream@npm:^2.0.1":
   version: 2.2.0
   resolution: "tar-stream@npm:2.2.0"
@@ -7130,6 +7309,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"type-fest@npm:^5.5.0":
+  version: 5.6.0
+  resolution: "type-fest@npm:5.6.0"
+  dependencies:
+    tagged-tag: "npm:^1.0.0"
+  checksum: 10c0/5468a8ffda7f3904e6f7bbd8069eb8b6dd4bd9156e206df7a01d09a73e28cd1afedf74ead9d0fc12841c8c90074194859feca240511c50800962fde1bd9ddcbc
+  languageName: node
+  linkType: hard
+
 "typed-array-buffer@npm:^1.0.3":
   version: 1.0.3
   resolution: "typed-array-buffer@npm:1.0.3"
@@ -7180,6 +7368,17 @@ __metadata:
     possible-typed-array-names: "npm:^1.0.0"
     reflect.getprototypeof: "npm:^1.0.6"
   checksum: 10c0/e38f2ae3779584c138a2d8adfa8ecf749f494af3cd3cdafe4e688ce51418c7d2c5c88df1bd6be2bbea099c3f7cea58c02ca02ed438119e91f162a9de23f61295
+  languageName: node
+  linkType: hard
+
+"typed-event-target@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "typed-event-target@npm:4.3.0"
+  dependencies:
+    "@augment-vir/assert": "npm:^31.67.1"
+    "@augment-vir/common": "npm:^31.67.1"
+    "@augment-vir/core": "npm:^31.67.1"
+  checksum: 10c0/9b5af6d240a007fe1931d7b12613d4d8d8e75be966254cd7e6fa794006f68de6acfe41da31fc76ad109dd4298f96c261b8422f9bb309520cbe3db9a934b12789
   languageName: node
   linkType: hard
 
@@ -7771,6 +7970,10 @@ __metadata:
     jsonc-eslint-parser: "npm:^3.1.0"
     lint-staged: "npm:^16.4.0"
     prettier: "npm:^3.7.4"
+    prettier-plugin-multiline-arrays: "npm:^4.1.7"
+    prettier-plugin-packagejson: "npm:^3.0.2"
+    prettier-plugin-sh: "npm:^0.18.1"
+    prettier-plugin-sort-json: "npm:^4.2.0"
     simple-git-hooks: "npm:^2.13.1"
     tslib: "npm:^2.8.1"
     typescript: "npm:6.0.3"

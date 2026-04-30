@@ -2,6 +2,12 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "eslint.workingDirectories": [
+    "docs",
+    "lib",
+    "example",
+    "."
+  ],
   "search.exclude": {
     "**/.pnp.*": true,
     "**/.yarn": true
