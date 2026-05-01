@@ -1274,7 +1274,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^25.6.0":
   version: 25.6.0
   resolution: "@types/node@npm:25.6.0"
   dependencies:
@@ -7980,7 +7980,7 @@ __metadata:
     "@commitlint/cli": "npm:^20.5.0"
     "@commitlint/config-conventional": "npm:^20.5.0"
     "@eslint/js": "npm:^9"
-    "@types/node": "npm:^24.0.0"
+    "@types/node": "npm:^25.6.0"
     "@yarnpkg/builder": "npm:^4.2.2"
     "@yarnpkg/cli": "npm:^4.9.3"
     "@yarnpkg/core": "npm:^4.4.3"
