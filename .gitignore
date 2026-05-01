@@ -16,6 +16,7 @@
 .npm-cache/
 artifacts/
 build/
+!.github/**/build
 bundles/
 coverage/
 dist/
