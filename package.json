@@ -68,7 +68,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
-    "@eslint/js": "^9",
+    "@eslint/js": "^10",
     "@types/node": "^24.0.0",
     "@yarnpkg/builder": "^4.2.2",
     "@yarnpkg/cli": "^4.9.3",
