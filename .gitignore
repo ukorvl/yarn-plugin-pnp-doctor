@@ -1,5 +1,4 @@
 .DS_Store
-.pnp.*
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

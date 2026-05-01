@@ -4,6 +4,19 @@ import { analyzeProject } from "../sources/core/analyzer";
 import type { ProjectSnapshot } from "../sources/core/types";
 
 describe(`analyzeProject`, () => {
+  it(`reports empty installs`, () => {
+    const report = analyzeProject(project(), {
+      presetName: `default`,
+    });
+
+    expect(report.findings).toContainEqual(
+      expect.objectContaining({
+        code: `PNP002`,
+        severity: `warning`,
+      })
+    );
+  });
+
   it(`reports non-PnP linker mode`, () => {
     const report = analyzeProject(
       project({
@@ -22,24 +35,44 @@ describe(`analyzeProject`, () => {
     );
   });
 
+  it(`only emits native binary findings when running under PnP`, () => {
+    const pnpReport = analyzeProject(
+      project({
+        packages: [pkg(`@swc/core`, `@swc/core@npm:1.7.0`, `1.7.0`)],
+      }),
+      {
+        presetName: `web3`,
+      }
+    );
+    const nodeModulesReport = analyzeProject(
+      project({
+        nodeLinker: `node-modules`,
+        packages: [pkg(`@swc/core`, `@swc/core@npm:1.7.0`, `1.7.0`)],
+      }),
+      {
+        presetName: `web3`,
+      }
+    );
+
+    expect(pnpReport.findings).toContainEqual(
+      expect.objectContaining({
+        code: `PNP_NATIVE_BINARY`,
+        packageIdent: `@swc/core`,
+      })
+    );
+    expect(nodeModulesReport.findings).not.toContainEqual(
+      expect.objectContaining({
+        code: `PNP_NATIVE_BINARY`,
+      })
+    );
+  });
+
   it(`detects web3 major splits`, () => {
     const report = analyzeProject(
       project({
         packages: [
-          {
-            ident: `ethers`,
-            locator: `ethers@npm:5.7.2`,
-            version: `5.7.2`,
-            dependencies: [],
-            peerDependencies: [],
-          },
-          {
-            ident: `ethers`,
-            locator: `ethers@npm:6.15.0`,
-            version: `6.15.0`,
-            dependencies: [],
-            peerDependencies: [],
-          },
+          pkg(`ethers`, `ethers@npm:5.7.2`, `5.7.2`),
+          pkg(`ethers`, `ethers@npm:6.15.0`, `6.15.0`),
         ],
       }),
       {
@@ -56,18 +89,31 @@ describe(`analyzeProject`, () => {
     );
   });
 
-  it(`emits web3 package watch findings`, () => {
+  it(`ignores same-major and unknown versions`, () => {
     const report = analyzeProject(
       project({
         packages: [
-          {
-            ident: `hardhat`,
-            locator: `hardhat@npm:2.22.0`,
-            version: `2.22.0`,
-            dependencies: [],
-            peerDependencies: [],
-          },
+          pkg(`ethers`, `ethers@npm:5.0.0`, `5.0.0`),
+          pkg(`ethers`, `ethers@npm:5.7.2`, `5.7.2`),
+          pkg(`ethers`, `ethers@npm:unknown`, null),
         ],
+      }),
+      {
+        presetName: `web3`,
+      }
+    );
+
+    expect(report.findings).not.toContainEqual(
+      expect.objectContaining({
+        code: `PNP_MAJOR_SPLIT`,
+      })
+    );
+  });
+
+  it(`emits web3 package watch findings`, () => {
+    const report = analyzeProject(
+      project({
+        packages: [pkg(`hardhat`, `hardhat@npm:2.22.0`, `2.22.0`)],
       }),
       {
         presetName: `web3`,
@@ -90,5 +136,15 @@ function project(overrides: Partial<ProjectSnapshot> = {}): ProjectSnapshot {
     nodeLinker: `pnp`,
     packages: [],
     ...overrides,
+  };
+}
+
+function pkg(ident: string, locator: string, version: string | null) {
+  return {
+    ident,
+    locator,
+    version,
+    dependencies: [],
+    peerDependencies: [],
   };
 }

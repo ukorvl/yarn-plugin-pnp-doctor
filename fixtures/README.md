@@ -15,3 +15,7 @@ Each fixture should include:
 - the command that fails or demonstrates the behavior
 - the expected `yarn pnp-doctor --preset web3` finding
 - any packageExtensions entry only after it has been verified
+
+Current fixture template:
+
+- `projects/web3-local-stack` is a fully local Yarn project used by tests to generate real installs under both `nodeLinker: pnp` and `nodeLinker: node-modules` without hitting the network.

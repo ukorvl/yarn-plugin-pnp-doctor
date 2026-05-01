@@ -17,8 +17,3 @@ runs:
     - name: Validate package tarball
       run: yarn verify:package
       shell: bash
-
-    - name: Lint commits
-      if: ${{ inputs.check-commits == 'true' }}
-      run: yarn lint:commits
-      shell: bash

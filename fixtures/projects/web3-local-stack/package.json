@@ -1,0 +1,14 @@
+{
+  "name": "web3-local-stack",
+  "private": true,
+  "packageManager": "yarn@4.13.0",
+  "workspaces": ["packages/*"],
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "file:./vendors/hardhat-toolbox",
+    "@nomiclabs/hardhat-ethers": "file:./vendors/hardhat-ethers",
+    "@solana/web3.js": "file:./vendors/solana-web3",
+    "@wagmi/cli": "file:./vendors/wagmi-cli",
+    "@walletconnect/ethereum-provider": "file:./vendors/walletconnect-provider",
+    "hardhat": "file:./vendors/hardhat"
+  }
+}

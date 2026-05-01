@@ -1,0 +1,7 @@
+{
+  "name": "app-a",
+  "version": "1.0.0",
+  "dependencies": {
+    "ethers": "file:../../vendors/ethers-v5"
+  }
+}

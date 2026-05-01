@@ -1,8 +1,14 @@
 {
   "name": "yarn-plugin-pnp-doctor",
   "version": "0.0.0",
-  "description": "A Yarn plugin that makes strict Plug'n'Play installs practical in messy ecosystems.",
-  "license": "MIT",
+  "description": "A Yarn plugin that makes strict PnP installs practical in messy ecosystems.",
+  "keywords": [
+    "yarn",
+    "yarn-plugin",
+    "pnp",
+    "dependencies",
+    "plugnplay"
+  ],
   "homepage": "https://github.com/ukorvl/yarn-plugin-pnp-doctor#readme",
   "bugs": {
     "url": "https://github.com/ukorvl/yarn-plugin-pnp-doctor/issues"
@@ -11,20 +17,16 @@
     "type": "git",
     "url": "git+https://github.com/ukorvl/yarn-plugin-pnp-doctor.git"
   },
-  "keywords": [
-    "yarn",
-    "yarn-plugin",
-    "pnp",
-    "plugnplay",
-    "dependencies",
-    "web3"
-  ],
-  "packageManager": "yarn@4.13.0",
-  "main": "./sources/index.ts",
+  "license": "MIT",
+  "author": {
+    "name": "ukorvl",
+    "email": "ukorotovskiy@gmail.com"
+  },
   "exports": {
     ".": "./sources/index.ts",
     "./package.json": "./package.json"
   },
+  "main": "./sources/index.ts",
   "files": [
     "bundles/",
     "sources/",
@@ -39,27 +41,29 @@
     "commitlint": "commitlint",
     "commitlint:edit": "commitlint --edit",
     "eslint": "eslint .",
-    "format": "prettier --check \"**/*.{js,ts,json,md,yaml,yml}\"",
-    "format:fix": "prettier --write \"**/*.{js,ts,json,md,yaml,yml}\"",
+    "format": "prettier --check \"**/*.{js,ts,json,md,yaml,yml,sh}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,json,md,yaml,yml,sh}\"",
     "hooks:install": "simple-git-hooks",
     "lint": "yarn format && yarn eslint && yarn lint:md-links && yarn typecheck",
-    "lint:commits": "sh -c 'if git rev-parse --verify HEAD~1 >/dev/null 2>&1; then yarn commitlint --from=HEAD~1 --to=HEAD; else yarn commitlint --last; fi'",
     "lint:fix": "yarn format:fix && yarn eslint --fix",
     "lint:md-links": "node scripts/check-markdown-links.mjs",
     "lint-staged": "lint-staged",
-    "pack:package": "mkdir -p artifacts && npm pack --pack-destination artifacts",
     "prepack": "yarn build",
+    "pack:package": "mkdir -p artifacts && npm pack --pack-destination artifacts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "verify:package": "bash scripts/verify-tarball.sh"
   },
+  "simple-git-hooks": {
+    "pre-commit": "yarn lint-staged",
+    "commit-msg": "yarn commitlint:edit \"$1\""
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,md,yaml,yml}": "yarn prettier --write"
+  },
   "dependencies": {
     "clipanion": "^4.0.0-rc.4",
     "tslib": "^2.8.1"
-  },
-  "peerDependencies": {
-    "@yarnpkg/cli": "^4.9.3",
-    "@yarnpkg/core": "^4.4.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
@@ -83,24 +87,26 @@
     "jsonc-eslint-parser": "^3.1.0",
     "lint-staged": "^16.4.0",
     "prettier": "^3.7.4",
+    "prettier-plugin-multiline-arrays": "^4.1.7",
+    "prettier-plugin-packagejson": "^3.0.2",
+    "prettier-plugin-sh": "^0.18.1",
+    "prettier-plugin-sort-json": "^4.2.0",
     "simple-git-hooks": "^2.13.1",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.59.0",
     "vitest": "^3.2.0"
   },
-  "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged",
-    "commit-msg": "yarn commitlint:edit \"$1\""
+  "peerDependencies": {
+    "@yarnpkg/cli": "^4.9.3",
+    "@yarnpkg/core": "^4.4.3"
   },
-  "lint-staged": {
-    "**/*.{js,ts,json,md,yaml,yml}": "yarn prettier --write"
+  "packageManager": "yarn@4.14.1",
+  "engines": {
+    "node": ">=20.19.0 <25"
   },
   "publishConfig": {
     "access": "public",
     "provenance": true,
     "registry": "https://registry.npmjs.org/"
-  },
-  "engines": {
-    "node": ">=20.19.0 <25"
   }
 }
