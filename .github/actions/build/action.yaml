@@ -1,0 +1,13 @@
+name: "Build plugin"
+description: "Build the standalone Yarn plugin bundle"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build
+      run: yarn build
+      shell: bash
+
+    - name: Check bundle size
+      run: yarn check:bundle-size
+      shell: bash
